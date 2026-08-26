@@ -1,0 +1,90 @@
+generated: '2026-08-25'
+method: probed
+source: live HTTPS probes of the Levicept corporate host (levicept.com / www.levicept.com)
+note: >-
+  Every /.well-known/ path probed on both Levicept hosts returned 404 from the
+  WordPress origin. No security.txt, no api-catalog, no OAuth/OIDC discovery
+  document, no ai-plugin.json and no A2A agent card is served. This file records a
+  measured ABSENCE — no WellKnown or SecurityTxt pointer is emitted in apis.yml,
+  because the provider does not serve any of these documents.
+hosts:
+- host: levicept.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: www.levicept.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+contract_discovery:
+  note: >-
+    STEP 0b contract discovery run 2026-08-25 against every host associated with
+    Levicept. No REST OpenAPI, no GraphQL endpoint, no MCP server, no A2A agent
+    card, no SOAP/WSDL and no .proto was found. The only machine-readable surface
+    on levicept.com is the stock WordPress core REST API at /wp-json/ — CMS
+    infrastructure shipped by WordPress, not an API product Levicept publishes,
+    documents or supports. It is recorded here for transparency and deliberately
+    NOT registered as an API in apis.yml.
+  probes:
+  - url: https://levicept.com/openapi.json
+    status: 404
+  - url: https://levicept.com/swagger.json
+    status: 404
+  - url: https://levicept.com/api-docs
+    status: 404
+  - url: https://levicept.com/api/v1
+    status: 404
+  - url: https://levicept.com/graphql
+    status: 404
+  - url: https://levicept.com/developers
+    status: 404
+  - url: https://levicept.com/llms.txt
+    status: 404
+  - url: https://levicept.com/wp-json/wp/v2
+    status: 200
+    note: stock WordPress core REST API; not a published Levicept API product
+  - url: https://api.github.com/orgs/levicept
+    status: 404
+    note: no GitHub organization
+  - url: https://registry.npmjs.org/levicept
+    status: 404
+  - url: https://pypi.org/pypi/levicept/json
+    status: 404
